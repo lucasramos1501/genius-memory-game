@@ -11,6 +11,7 @@ const blue = document.querySelector(".blue");
 const red = document.querySelector(".red");
 const green = document.querySelector(".green");
 const yellow = document.querySelector(".yellow");
+const btn = document.querySelector(".btn");
 
 let shufferOder = () => {
     let colorOrder = Math.floor(Math.random() * 4);
@@ -33,7 +34,7 @@ let lightColor = (element, number) => {
 
     setTimeout(() => {
         element.classList.remove("selected");
-    });
+    }, number);
 }
 
 // checa se os botões clicados são os mesmos da ordem gerada no jogo
@@ -45,7 +46,6 @@ let checkOrder = () => {
         }
     }
     if(clickedOrder.length == order.length){
-        alert(`Pontuação: ${score}\nVocê acertou! Iniciando o próximo nível!`);
         nextLevel();
     }
 }
@@ -83,8 +83,6 @@ let gameOver = () => {
     alert(`Pontuação: ${score}\nVocê perdeu o jogo! Clique em OK para iniciar um novo jogo!`);
     order = [];
     clickedOrder = [];
-    
-    playGame();
 }
 
 let playGame = () => {
@@ -98,4 +96,4 @@ red.onclick = () => click(1);
 yellow.onclick = () => click(2);
 blue.onclick = () => click(3);
 
-playGame();
+btn.onclick = () => playGame();
