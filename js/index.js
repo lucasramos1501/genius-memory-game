@@ -13,7 +13,13 @@ const green = document.querySelector(".green");
 const yellow = document.querySelector(".yellow");
 const btn = document.querySelector(".btn");
 
+const startSound = new Audio("../assets/start.wav");
+const gameoverSound = new Audio("../assets/gameover2.wav");
+const backgroundSound = new Audio("../assets/musicaDeFundo.wav");
+
 let shufferOder = () => {
+    backgroundSound.volume = 0.2;
+    backgroundSound.play();
     let colorOrder = Math.floor(Math.random() * 4);
     order[order.length] = colorOrder;
     colorOrder = [];
@@ -80,12 +86,14 @@ let nextLevel = () => {
 }
 
 let gameOver = () => {
+    gameoverSound.play();
     alert(`Pontuação: ${score}\nVocê perdeu o jogo! Clique em OK para iniciar um novo jogo!`);
     order = [];
     clickedOrder = [];
 }
 
 let playGame = () => {
+    startSound.play();  
     alert("Bem vindo ao jogo!");
     score = 0;
     nextLevel();
